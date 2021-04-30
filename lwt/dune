@@ -1,0 +1,12 @@
+(executables
+  (names
+    basic
+    batchifier)
+  (libraries base stdio lwt lwt_ppx lwt-pipe)
+  (preprocess (pps
+    lwt_ppx
+    ppx_jane
+    ppx_python
+    ppx_deriving.show
+    ppx_deriving.eq))
+  (flags (-open Base)))
