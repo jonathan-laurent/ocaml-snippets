@@ -34,17 +34,25 @@ let bench () =
   let fml = Boolean.mk_implies ctx (mk_gt ctx x one) (mk_gt ctx x zero) in
   let fml_neg = Boolean.mk_not ctx fml in
   let solver = Solver.mk_simple_solver ctx in
-  let check_reset () =
-    let () = Solver.add solver [fml_neg] in
-    assert (is_unsat (Solver.check solver [])) in
-    let () = Solver.reset solver in
-  let check_push_pop () =
-    let () = Solver.push solver in
-    let () = Solver.add solver [fml_neg] in
-    assert (is_unsat (Solver.check solver [])) in
-    let () = Solver.pop solver 0 in
+  (* let solver = Solver.mk_solver_t ctx (Tactic.mk_tactic ctx "smt") in *)
+  let check () = begin
+    assert (Solver.get_num_assertions solver = 0);
+    assert (is_unsat (Solver.check solver [fml_neg]));
+  end in
+  let check_reset () = begin
+    Solver.add solver [fml_neg];
+    assert (is_unsat (Solver.check solver []));
+    Solver.reset solver;
+  end in
+  let check_push_pop () = begin
+    Solver.push solver;
+    Solver.add solver [fml_neg];
+    assert (is_unsat (Solver.check solver []));
+    Solver.pop solver 1;
+  end in
   let open Core_bench in
   let benchs = [
+    Bench.Test.create ~name:"Check" check;
     Bench.Test.create ~name:"Reset" check_reset;
     Bench.Test.create ~name:"Push-pop" check_push_pop
   ] in

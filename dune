@@ -7,6 +7,7 @@
     search_monad
     continuation
     regex
+    expand
     ansi
     ast_visitor
     ac_unif
