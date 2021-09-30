@@ -1,4 +1,4 @@
 (executables
   (names test)
-  (libraries base stdio z3)
+  (libraries base stdio z3 core core_bench)
   (flags (-cclib -lstdc++ -open Base)))
