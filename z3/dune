@@ -1,0 +1,4 @@
+(executables
+  (names test)
+  (libraries base stdio z3)
+  (flags (-cclib -lstdc++ -open Base)))
