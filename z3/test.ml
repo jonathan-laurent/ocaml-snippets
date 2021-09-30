@@ -21,6 +21,10 @@ let test () =
   | None -> assert false
   | Some m -> Stdio.printf "Model: \n%s\n" (Model.to_string m)
 
+let is_unsat = function
+  | Solver.UNSATISFIABLE -> true
+  | _ -> false
+
 let bench () =
   let ctx = mk_context [("model", "false"); ("proof", "false")] in
   let real = Real.mk_sort ctx in
@@ -30,15 +34,20 @@ let bench () =
   let fml = Boolean.mk_implies ctx (mk_gt ctx x one) (mk_gt ctx x zero) in
   let fml_neg = Boolean.mk_not ctx fml in
   let solver = Solver.mk_simple_solver ctx in
-  let check () =
-    let () = Solver.reset solver in
+  let check_reset () =
     let () = Solver.add solver [fml_neg] in
-    match Solver.check solver [] with
-    | Solver.UNSATISFIABLE -> ()
-    | _ -> assert false in
+    assert (is_unsat (Solver.check solver [])) in
+    let () = Solver.reset solver in
+  let check_push_pop () =
+    let () = Solver.push solver in
+    let () = Solver.add solver [fml_neg] in
+    assert (is_unsat (Solver.check solver [])) in
+    let () = Solver.pop solver 0 in
   let open Core_bench in
   let benchs = [
-    Bench.Test.create ~name:"Reset" check] in
+    Bench.Test.create ~name:"Reset" check_reset;
+    Bench.Test.create ~name:"Push-pop" check_push_pop
+  ] in
   benchs |> Bench.make_command |> Core.Command.run
 
 let () = bench ()
