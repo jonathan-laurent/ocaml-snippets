@@ -30,6 +30,27 @@ let enum_map' = function
   | B -> C
   | C -> B
 
+type 'a union_shared =
+  | Int_s of 'a * int
+  | Bool_s of 'a * bool
+
+let annot_s = function
+  | Int_s (a, _) -> a
+  | Bool_s (a, _) -> a
+
+type 'a union_shared_bad =
+  | Int_sb of 'a * int
+  | Bool_sb of bool * 'a
+
+let annot_sb = function
+  | Int_sb (a, _) -> a
+  | Bool_sb (_, a) -> a
+
+type 'a union_non_shared = 'a * int_or_bool
+and int_or_bool = Int_ns of int | Bool_ns of bool
+
+let annot_ns = fst
+
 (* Almost twice slower than the version that does not allocate *)
 let sum_squares l =
   List.map l ~f:(fun x -> x * x)
@@ -75,4 +96,11 @@ let profile_compose_map () =
     ~normal:(fun () -> compose_map l)
     ~optimized:(fun () -> compose_map' l)
 
-let () = profile_add_assoc ()
+(* Inconclusive *)
+let profile_union_shared () =
+  (* let normal () = List.map ~f:annot_s [Int_s (0, 1); Bool_s (0, true)] in *)
+  let normal () = List.map ~f:annot_sb [Int_sb (0, 1); Bool_sb (true, 0)] in
+  let optimized () = List.map ~f:annot_ns [(0, Int_ns 1); (0, Bool_ns true)] in
+  profile ~normal ~optimized
+
+let () = profile_union_shared ()
