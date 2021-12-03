@@ -6,7 +6,7 @@ type 'a t = Empty | Node of priority * 'a * 'a t * 'a t
 let empty = Empty
 
 (* We do not guarantee that the tree will be balanced but we swap left and right
-  * children regularly to make the worst-case behavior less likely. *)
+ * children regularly to make the worst-case behavior less likely. *)
 let rec insert queue prio elt =
   match queue with
     Empty -> Node(prio, elt, Empty, Empty)
