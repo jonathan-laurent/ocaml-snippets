@@ -5,6 +5,8 @@
     annotations_module
     separate_annotations
     search_monad
+    search_monad_eager
+    monad_transformers
     continuation
     regex
     expand
@@ -20,11 +22,11 @@
     bigarray_tests
     sussman_matching
     egraph
+    ext_annots
     ppx_import)
   (modes byte exe)
   (libraries base stdio core_bench ANSITerminal re zarith)
-  (preprocess (staged_pps
-    ppx_import
+  (preprocess (pps
     ppx_jane
     ppx_deriving.eq
     ppx_deriving.show))

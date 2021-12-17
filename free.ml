@@ -15,18 +15,16 @@ module Make (F: FUNCTOR) = struct
     | Pure x -> Pure (f x)
     | Free fmx -> Free (F.map (map f) fmx)
 
-  let rec join = function
-    | Pure mx -> mx
-    | Free fmmx -> Free (F.map join fmmx)
-
-  let lift fx = Free (F.map return fx)
-
-  let (>>=) mx f = join (map f mx)
-
   (* Defining bind directly without join and map *)
   let rec (>>=) mx f =
     match mx with
     | Pure x -> f x
     | Free fmx -> Free (F.map (fun mx -> mx >>= f) fmx)
+
+  (* Adding some syntactic sugar *)
+  let (let*) = (>>=)
+  module Let_syntax = struct
+    let bind x ~f = (>>=) x f
+  end
 
 end
