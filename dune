@@ -21,7 +21,6 @@
     gadts
     gen_bintree
     union_find
-    bigarray_tests
     sussman_matching
     egraph
     ext_annots
