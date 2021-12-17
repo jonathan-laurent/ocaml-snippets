@@ -16,6 +16,8 @@
     groebner
     debug_test
     unification
+    lang_basic
+    lang_cont
     gadts
     gen_bintree
     union_find
