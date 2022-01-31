@@ -1,11 +1,11 @@
 (executables
   (names
     flambda_benchs
+    debruijn
     annotated_expr
     annotations_module
     separate_annotations
     search_monad
-    search_monad_eager
     monad_transformers
     continuation
     regex
@@ -24,9 +24,9 @@
     sussman_matching
     egraph
     ext_annots
-    ppx_import)
+    debug_nonterminating)
   (modes byte exe)
-  (libraries base stdio core_bench ANSITerminal re zarith)
+  (libraries base stdio core_bench ANSITerminal re zarith angstrom)
   (preprocess (pps
     ppx_jane
     ppx_deriving.eq
