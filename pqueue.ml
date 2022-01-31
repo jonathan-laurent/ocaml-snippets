@@ -36,3 +36,11 @@ let singleton prio elt = insert empty prio elt
 let rec size = function
   | Empty -> 0
   | Node (_, _, l, r) -> 1 + size l + size r
+
+module Mutable = struct
+  type 'a tref = ('a t) ref
+  type 'a t = 'a tref
+  let create () = ref Empty
+  let push q cost cont = q := insert !q cost cont
+  let pop q = let c, n, q' = extract !q in q := q'; (c, n)
+end
