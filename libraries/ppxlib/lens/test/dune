@@ -15,4 +15,5 @@
 (test
   (name test)
   (modules test)
+  (libraries lens)
   (preprocess (pps ppx_deriving_lens)))

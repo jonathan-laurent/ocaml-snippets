@@ -2,4 +2,4 @@
  (name ppx_deriving_lens)
  (kind ppx_deriver)
  (preprocess (pps ppxlib.metaquot))
- (libraries ppxlib))
+ (libraries base ppxlib))
