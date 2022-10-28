@@ -1,0 +1,1 @@
+type my_record = {x: int; y: float} [@@deriving lens]

@@ -1,5 +1,5 @@
 open Ppxlib
-open Ast_builder.Default
+(* open Ast_builder.Default *)
 
 let generate_impl ~ctxt
   ((_rec_flag, type_declarations): rec_flag * type_declaration list) =
