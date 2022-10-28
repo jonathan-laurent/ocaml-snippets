@@ -39,4 +39,4 @@ let () =
     Bench.Test.create ~name:"Standatd" (fun () -> num_const e);
     Bench.Test.create ~name:"Visitor" (fun () -> num_const_visitor e)
   ] in
-  benchs |> Bench.make_command |> Core.Command.run
+  benchs |> Bench.make_command |> Command_unix.run

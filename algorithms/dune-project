@@ -1,0 +1,24 @@
+(lang dune 3.0)
+
+(generate_opam_files true)
+
+(authors "Jonathan Laurent")
+(maintainers "jonathan.laurent@cs.cmu.edu")
+
+(package
+ (name algorithm-snippets)
+ (allow_empty)
+ (synopsis "The Looprl library")
+ (source (github "jonathan-laurent/ocaml-snippets"))
+ (description
+  "\| OCaml snippets for various algorithms
+ )
+ (depends
+  base
+  stdio
+  ppx_deriving
+  core_bench
+  core_unix.command_unix
+  zarith
+  angstrom
+ ))

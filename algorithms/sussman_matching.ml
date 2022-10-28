@@ -144,7 +144,7 @@ let profile pat str =
         (fun () -> match_string pat str |> Sequence.to_list)
     ; Bench.Test.create ~name:"Tailrec"
         (fun () -> match_string_fast pat str |> Sequence.to_list) ] in
-  benchs |> Bench.make_command |> Core.Command.run
+  benchs |> Bench.make_command |> Command_unix.run
 
 let () =
   (* profile "A !B ?C ?C !B !E" "A X Y Q Q X Y Z Z X Y Q Q X Y R" *)

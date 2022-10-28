@@ -101,37 +101,3 @@ let rec map_vec: type n a b. f:(a -> b) -> (n, a) vec -> (n, b) vec =
   match v with
   | Nil -> Nil
   | Cons (x, xs) -> Cons (f x, map_vec ~f xs)
-
-
-
-(*
-
-you need to store arity explicitly: 
-
-Interpreted function: 
-
-Uninterpreted name (arity) monotonicity 
-
-Database of names.
-
-type 'sz 
-
-Uninterpreted (Binary, f)
-
-Tup.Z
-Tup.U x
-Tup.B (x, y)
-
-Tup.Ar.Z
-Tup.Ar.U
-
-Tup.Arity.Z
-Tup.Arity.U
-
-type 
-
-interpret 
-
-let interpret_function
-
-*)

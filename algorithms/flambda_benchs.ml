@@ -68,7 +68,7 @@ let profile ~normal ~optimized =
   let benchs = [
     Bench.Test.create ~name:"Normal" normal;
     Bench.Test.create ~name:"Optimized" optimized] in
-  benchs |> Bench.make_command |> Core.Command.run
+  benchs |> Bench.make_command |> Command_unix.run
 
 (* ~30% slowdown, with or without flambda *)
 let profile_add_assoc () =

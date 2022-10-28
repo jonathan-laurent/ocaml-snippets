@@ -132,7 +132,7 @@ let profile () =
     Bench.Test.create ~name:"AC Unification" computation;
     Bench.Test.create ~name:"AC equality" (fun () -> ac_equal e e)
   ] in
-  benchs |> Bench.make_command |> Core.Command.run
+  benchs |> Bench.make_command |> Command_unix.run
 
 (* Test suite *)
 

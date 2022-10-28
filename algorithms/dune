@@ -8,13 +8,10 @@
     search_monad
     monad_transformers
     continuation
-    regex
     expand
-    ansi
     ast_visitor
     ac_unif
     groebner
-    debug_test
     unification
     lang_basic
     lang_cont
@@ -26,7 +23,13 @@
     ext_annots
     debug_nonterminating)
   (modes byte exe)
-  (libraries base stdio core_bench ANSITerminal re zarith angstrom)
+  (libraries
+    base
+    stdio
+    core_bench
+    core_unix.command_unix
+    zarith
+    angstrom)
   (preprocess (pps
     ppx_jane
     ppx_deriving.eq

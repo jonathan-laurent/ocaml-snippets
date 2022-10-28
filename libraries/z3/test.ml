@@ -56,6 +56,6 @@ let bench () =
     Bench.Test.create ~name:"Reset" check_reset;
     Bench.Test.create ~name:"Push-pop" check_push_pop
   ] in
-  benchs |> Bench.make_command |> Core.Command.run
+  benchs |> Bench.make_command |> Command_unix.run
 
 let () = bench ()

@@ -90,6 +90,8 @@ let example =
   let* _ = ensure (x + y = 0) in
   return (x, y)
 
+
+
 (* Prints: [(1, -1); (2, -2); (3, -3)] *)
 let () = dijkstra example
   |> Sequence.to_list |> [%show: (int*int) list] |> Stdio.print_endline
