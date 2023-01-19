@@ -9,12 +9,12 @@ authors: ["Jonathan Laurent"]
 homepage: "https://github.com/jonathan-laurent/ocaml-snippets"
 bug-reports: "https://github.com/jonathan-laurent/ocaml-snippets/issues"
 depends: [
-  "dune" {>= "3.0"}
+  "dune" {>= "3.3"}
   "base"
   "stdio"
   "ppx_deriving"
   "core_bench"
-  "core_unix.command_unix"
+  "core_unix"
   "zarith"
   "angstrom"
   "odoc" {with-doc}

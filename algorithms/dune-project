@@ -1,4 +1,4 @@
-(lang dune 3.0)
+(lang dune 3.3)
 
 (generate_opam_files true)
 
@@ -18,7 +18,7 @@
   stdio
   ppx_deriving
   core_bench
-  core_unix.command_unix
+  core_unix
   zarith
   angstrom
  ))
