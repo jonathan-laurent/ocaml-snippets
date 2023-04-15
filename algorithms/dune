@@ -1,5 +1,6 @@
 (executables
  (names
+  indexed_arrays
   flambda_benchs
   debruijn
   annotated_expr
@@ -26,6 +27,6 @@
  (libraries base stdio core_bench core_unix.command_unix zarith angstrom)
  (preprocess
   (pps ppx_jane ppx_deriving.eq ppx_deriving.show))
- (ocamlopt_flags -O3)
+ (ocamlopt_flags -O3 -inlining-report)
  (flags
   (-open Base)))

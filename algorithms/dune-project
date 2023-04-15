@@ -8,10 +8,10 @@
 (package
  (name algorithm-snippets)
  (allow_empty)
- (synopsis "The Looprl library")
+ (synopsis "OCaml snippets")
  (source (github "jonathan-laurent/ocaml-snippets"))
  (description
-  "\| OCaml snippets for various algorithms
+  "\| Some fun and useful OCaml snippets
  )
  (depends
   base
