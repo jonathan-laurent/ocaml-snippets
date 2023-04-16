@@ -1,0 +1,4 @@
+(executables
+ (names asm_normal asm_alias profile)
+ (libraries core_bench core_unix.command_unix)
+ (ocamlopt_flags -O3 -S -inlining-report))

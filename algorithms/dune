@@ -27,6 +27,5 @@
  (libraries base stdio core_bench core_unix.command_unix zarith angstrom)
  (preprocess
   (pps ppx_jane ppx_deriving.eq ppx_deriving.show))
- (ocamlopt_flags -O3 -inlining-report)
- (flags
-  (-open Base)))
+ (flags (:standard -warn-error -A))
+ (ocamlopt_flags -O3 -S -inlining-report))
