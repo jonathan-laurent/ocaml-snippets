@@ -15,8 +15,8 @@ module [@inline] Index () : INDEX = struct
     let i = ref (-1) in
     fun () -> (incr i; !i)
   module Array = Array
-  external ( .%( ) ): 'a array -> int -> 'a = "%array_unsafe_get"
-  external ( .%( )<- ): 'a array -> int -> 'a -> unit = "%array_unsafe_set"
+  external ( .%( ) ): 'a array -> int -> 'a = "%array_safe_get"
+  external ( .%( )<- ): 'a array -> int -> 'a -> unit = "%array_safe_set"
 end
 
 module Lid = Index ()
