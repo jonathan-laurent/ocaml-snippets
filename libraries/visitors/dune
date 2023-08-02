@@ -1,3 +1,4 @@
 (library (name visitors)
-  (preprocess (staged_pps ppx_import visitors.ppx ppx_deriving.fold))
+  (inline_tests)
+  (preprocess (staged_pps ppx_import visitors.ppx ppx_deriving.fold ppx_expect))
   (libraries compiler-libs))
