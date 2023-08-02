@@ -1,3 +1,2 @@
-(executable
-  (name test_visitors)
-  (preprocess (pps visitors.ppx)))
+(library (name visitors)
+  (preprocess (pps visitors.ppx ppx_deriving.fold)))
