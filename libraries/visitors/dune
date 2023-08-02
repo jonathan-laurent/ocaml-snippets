@@ -1,0 +1,3 @@
+(executable
+  (name test_visitors)
+  (preprocess (pps visitors.ppx)))
