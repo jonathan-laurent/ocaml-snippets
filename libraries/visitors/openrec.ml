@@ -16,6 +16,7 @@ module Naive = struct
     {get; set; incr}
 
   (* Does not work. *)
+  (* Indeed, [incr] is still going to use the old value of [set] *)
   let inherited =
     let counter = mkcounter () in
     counter.set <- (fun v -> print_string "!" ; counter.set v)

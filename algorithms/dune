@@ -1,5 +1,6 @@
 (executables
  (names
+  objects
   indexed_arrays
   flambda_benchs
   debruijn
